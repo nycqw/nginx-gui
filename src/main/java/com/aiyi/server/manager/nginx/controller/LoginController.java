@@ -42,10 +42,10 @@ public class LoginController {
       throw new ValidationException("请填登陆密码");
     }
     
-    String string = PropsUtils.get(CommonFields.PROP.ACCOUNT + "." + user.getUsername());
+    /*String string = PropsUtils.get(CommonFields.PROP.ACCOUNT + "." + user.getUsername());
     if (null == string || !string.equals(user.getPassword())) {
       throw new ValidationException("用户名或密码错误");
-    }
+    }*/
     session.setAttribute(CommonFields.SESSION_KEY.LOGIN_USER, user.getUsername());
     Result result = new Result();
     result.setSuccess(true);
