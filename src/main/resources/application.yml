@@ -9,3 +9,6 @@ spring:
 
 page-store: 
   location: D:\store
+
+logging:
+  config: classpath:logback-config.xml
