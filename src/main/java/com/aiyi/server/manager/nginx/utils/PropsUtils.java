@@ -49,6 +49,7 @@ public class PropsUtils {
     } else {
       dir += "/classes/conf.properties";
     }
+    log.info("conf.dir -> {}", dir);
     try (FileInputStream fileInputStream = new FileInputStream(dir);
          InputStreamReader reader = new InputStreamReader(fileInputStream, "UTF-8")){
       if(null == prop) {
