@@ -1,5 +1,7 @@
 package com.aiyi.server.manager.nginx.utils;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -7,11 +9,7 @@ import java.io.InputStreamReader;
 import java.util.Properties;
 
 
-/**
- * 配置文件操作类
- * @author 71934
- *
- */
+@Slf4j
 public class PropsUtils {
 
   private static Properties prop = null;
@@ -45,6 +43,7 @@ public class PropsUtils {
    */
   public static String get(String key) {
     String property = System.getProperty("conf.dir");
+    log.info("conf.dir -> {}", property);
     try (FileInputStream fileInputStream = new FileInputStream(property + "/conf.properties");
          InputStreamReader reader = new InputStreamReader(fileInputStream, "UTF-8")){
       if(null == prop) {
