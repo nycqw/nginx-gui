@@ -1,5 +1,6 @@
 package com.aiyi.server.manager.nginx.utils;
 
+import com.aiyi.server.manager.nginx.common.SystemUtils;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.FileInputStream;
@@ -42,9 +43,13 @@ public class PropsUtils {
    * @return
    */
   public static String get(String key) {
-    String property = System.getProperty("conf.dir");
-    log.info("conf.dir -> {}", property);
-    try (FileInputStream fileInputStream = new FileInputStream(property + "/conf.properties");
+    String dir = System.getProperty("conf.dir");
+    if (SystemUtils.isWindows()) {
+      dir += "/target/classes/conf.properties";
+    } else {
+      dir += "/classes/conf.properties";
+    }
+    try (FileInputStream fileInputStream = new FileInputStream(dir);
          InputStreamReader reader = new InputStreamReader(fileInputStream, "UTF-8")){
       if(null == prop) {
         prop = new Properties();
