@@ -16,7 +16,7 @@ public class SigarUtils {
         // 寻找 classpath 根目录下的 sigar 文件夹
         String userDir = System.getProperty("user.dir");
         File classPath;
-        if ("Windows".equals(osName)) {
+        if (osName.indexOf("Windows") != -1) {
             classPath = new File(userDir + "/sigarLibs");
         } else {
             classPath = new File(userDir + "/classes/sigarLibs");
